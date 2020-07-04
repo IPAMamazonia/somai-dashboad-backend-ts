@@ -1,9 +1,8 @@
 import { Sequelize } from 'sequelize'
-
 import dbConfig from '../config/database'
 
 class Database {
-  public connection: Sequelize;
+  public connection: Sequelize
 
   constructor () {
     this.init()

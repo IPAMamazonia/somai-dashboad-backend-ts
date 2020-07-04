@@ -2,7 +2,11 @@ import { Model, DataTypes } from 'sequelize'
 import bcrypt from 'bcryptjs'
 import database from '../database'
 
-const PROTECTED_ATTRIBUTES = ['password', 'token']
+const PROTECTED_ATTRIBUTES = [
+  'password',
+  'passwordResetToken',
+  'passwordResetExpires'
+]
 
 class User extends Model {
   public id: number
@@ -11,6 +15,8 @@ class User extends Model {
   public organization: string
   public email: string
   public password: string
+  public passwordResetToken: string
+  public passwordResetExpires: Date
 }
 
 User.init(
@@ -40,6 +46,12 @@ User.init(
     },
     password: {
       type: DataTypes.STRING
+    },
+    passwordResetToken: {
+      type: DataTypes.STRING
+    },
+    passwordResetExpires: {
+      type: DataTypes.DATE
     }
   },
   {
