@@ -1,17 +1,13 @@
 import path from 'path'
 import nodemailer from 'nodemailer'
-import { host, port, user, pass } from '../config/mail.json'
 import hbs from 'nodemailer-express-handlebars'
-
-// const transport = nodemailer.createTransport({
-//   host,
-//   port,
-//   auth: { user, pass }
-// })
 
 const transport = nodemailer.createTransport({
   service: 'gmail',
-  auth: { user: 'developers@ipam.org.br', pass: 'D3v1pa_m21cent' }
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
+  }
 })
 
 transport.use(
