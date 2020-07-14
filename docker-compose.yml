@@ -1,2 +1,12 @@
-está em -> /home/valderli/Documents/dockerImages/docker-compose.yml
-para rodar com o docker do banco que já existia
+version: "3"
+
+services:
+  dashboard_somai:
+    container_name: backend_dashboard_somai
+    build: .
+    command: yarn start
+    ports: 
+      - "3333:3333"
+    volumes:
+      - .:/var/www
+    restart: unless-stopped
