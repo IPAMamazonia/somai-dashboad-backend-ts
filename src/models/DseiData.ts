@@ -25,7 +25,8 @@ DseiData.init(
     accumulatedDeaths: DataTypes.NUMBER
   },
   {
-    sequelize: database.connection
+    sequelize: database.connection,
+    schema: 'covid19'
   }
 )
 

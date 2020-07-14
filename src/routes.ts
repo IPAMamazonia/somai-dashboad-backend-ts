@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express'
 import authMiddleware from './middlewares/auth'
 import UserController from './controllers/userController'
 import DseiDataController from './controllers/dseiDataController'
-import ProjectController from './controllers/projectController'
 
 const baseUrl = '/api/v1'
 
@@ -47,7 +46,7 @@ routes.get(`${baseUrl}/dsei`, (req: Request, res: Response) => {
   }
 
   // retorna todos os dados de DSEI
-  DseiDataController.index(req, res)
+  return DseiDataController.index(req, res)
 })
 
 routes.post(`${baseUrl}/dsei`, DseiDataController.store)
@@ -60,8 +59,5 @@ routes.use(authMiddleware)
 // user
 routes.put(`${baseUrl}/user/:id`, UserController.update)
 routes.delete(`${baseUrl}/user/:id`, UserController.destroy)
-
-// dashbord
-routes.get(`${baseUrl}/project`, ProjectController.index)
 
 export default routes

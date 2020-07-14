@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface) => {
-    return queryInterface.bulkInsert('dsei', [
+    return queryInterface.bulkInsert({ tableName: 'dsei', schema: 'covid19' }, [
       { name: 'ALTAMIRA', code: 2 },
       { name: 'ALTO RIO JURUÁ', code: 3 },
       { name: 'ALTO RIO NEGRO', code: 4 },
@@ -32,6 +32,10 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    return queryInterface.bulkDelete('dsei', null, {})
+    return queryInterface.bulkDelete(
+      { tableName: 'dsei', schema: 'covid19' },
+      null,
+      {}
+    )
   }
 }

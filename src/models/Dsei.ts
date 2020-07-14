@@ -20,7 +20,8 @@ Dsei.init(
     sequelize: database.connection,
     freezeTableName: true, // mantém o nome da tabela singular
     tableName: 'dsei', // nome da tabela
-    timestamps: false
+    timestamps: false,
+    schema: 'covid19'
   }
 )
 

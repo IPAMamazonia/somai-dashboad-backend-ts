@@ -24,7 +24,7 @@ class DseiDataController {
     }
   }
 
-  // retorna os dados de DSEI por página e limite
+  // retorna os dados de DSEI por página e limite de registros
   public async show (req: Request, res: Response): Promise<Response> {
     try {
       const limit: number = (req.query.limit as unknown) as number
@@ -186,13 +186,13 @@ class DseiDataController {
 
   // cadastra novos dados de DSEI
   public async store (req: Request, res: Response): Promise<Response> {
-    const data = await DseiData.sync()
+    await DseiData.sync()
       .then(async () => {
         return await DseiData.bulkCreate(req.body)
       })
       .catch((error) => res.status(400).json({ message: ' ' + error }))
 
-    return res.json(data)
+    return res.json({ message: 'Salvo com sucesso.' })
   }
 
   // deleta um DSEI
